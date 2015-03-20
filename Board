@@ -1,0 +1,36 @@
+
+public class Board {
+	
+	private int[][] pits = new int[2][6];
+	private int turn = 0, scorePlayer1 = 0, scorePlayer2 = 0;
+	
+	public Board()
+	{
+		for(int r = 0; r<pits.length; r++)
+			for(int c = 0; c<pits[0].length; c++)
+				pits[r][c] = 3;
+	}
+	
+	public Board(int stoneStart)
+	{
+		for(int r = 0; r<pits.length; r++)
+			for(int c = 0; c<pits[0].length; c++)
+				pits[r][c] = stoneStart;
+	}
+	
+	public void move(int pit)
+	{
+		this.removeStones(pit);
+		
+	}
+	
+	public int removeStones(int pit)
+	{
+		int stonesRemoved;
+		
+		
+		
+		return stonesRemoved;
+		
+	}
+}
