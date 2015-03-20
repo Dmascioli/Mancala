@@ -1,0 +1,62 @@
+import java.util.*;
+
+import javax.swing.*;
+
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.geom.*;
+public class Mancala_Driver {
+	JFrame stoneFrame = new JFrame();
+	JFrame mainFrame = new JFrame();
+	JPanel mainPanel = new JPanel();
+	JButton p1ScorePit = new JButton();
+	JButton p2ScorePit = new JButton();
+	JButton[][] pits = new JButton[2][6];
+	GridBagConstraints c = new GridBagConstraints();
+	
+	public static void main(String[] args) {
+		new Mancala_Driver();
+	}
+	
+	public Mancala_Driver()
+	{
+		mainFrame.setSize(500,500);
+		mainPanel.setLayout(new GridBagLayout());
+		c.fill = GridBagConstraints.VERTICAL;
+		c.gridx = 0;
+		c.gridy = 0;
+		c.gridheight = 2;
+		mainPanel.add(p1ScorePit, c);
+		
+		for(int i = 0; i < 2; i++)
+			for(int j = 0; j < 6; j++)
+				pits[i][j] = new JButton("");
+		c.gridx = 0;
+		c.gridy = 0;
+		c.gridheight = 1;
+		for(int i = 0; i < 6; i++)
+		{
+			c.gridx = i+1;
+			c.gridy = 0;
+			mainPanel.add(pits[0][i],c);
+		}
+		c.gridx = 0;
+		c.gridy = 0;
+		for(int i = 0; i < 6; i++)
+		{
+			c.gridx = i+1;
+			c.gridy = 1;
+			mainPanel.add(pits[1][i],c);
+		}
+		c.gridx = 7;
+		c.gridy = 0;
+		c.gridheight = 2;
+		mainPanel.add(p2ScorePit, c);
+		mainFrame.add(mainPanel);
+		mainFrame.setLocationRelativeTo(null);
+	   	mainFrame.setVisible(true);
+	   	mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+	}
+
+}
