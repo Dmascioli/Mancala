@@ -20,17 +20,58 @@ public class Board {
 	
 	public void move(int pit)
 	{
-		int pile = removeStones(pit), index = pit;
-		for(int a = 0; a<pile; a++)
+		int pile = removeStones(pit);
+		
+		if(pit > 6)
 		{
-			if(pit > 6)
+			pile = bottomMove(pit-6, pile);
+			
+		}
+		else
+		{
+			pile = topMove(pit, pile);
+			
+		}
+	}
+	
+	public int topMove(int pit, int pile)
+	{
+		for(int a = 5; a == 0; a--)
+		{
+			if(pile > 0)
 			{
-				for(int x=index-6; x < pits[1].length; x++)
-				{
-					
-				}
+				pits[0][a]++;
+				pile--;
+			}
+			if(pile != 0 && a == 0)
+			{
+				if(turn%2 == 0)
+					scorePlayer1++;
+				else
+					return pile;
 			}
 		}
+		return 0;
+	}
+	
+	public int bottomMove(int pit, int pile)
+	{
+		for(int a = 0; a < pits[1].length; a++)
+		{
+			if(pile > 0)
+			{
+				pits[1][a]++;
+				pile--;
+			}
+			if(pile != 0 && a == pits[1].length)
+			{
+				if(turn%2 == 1)
+					scorePlayer2++;
+				else
+					return pile;
+			}
+		}
+		return 0;
 	}
 	
 	public int removeStones(int pit)
@@ -79,6 +120,11 @@ public class Board {
 
 	public void setScorePlayer2(int scorePlayer2) {
 		this.scorePlayer2 = scorePlayer2;
+	}
+	
+	public int getStones(int row, int column)
+	{
+		return pits[row][column];
 	}
 	
 	
