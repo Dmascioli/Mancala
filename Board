@@ -37,28 +37,14 @@ public class Board {
 			}
 			if(row == 0)
 			{
-				for(int a = index-1; a>=0; a--)
+				for(int a = index; a>=0; a--)
 				{
-					pits[row][a]++;
-					pile--;
-					if(pile == 0)
-					{
-						turn++;
-						checkEnd(row, index);
-						break;
-					}	
 					if(pile > 0 && a == 0)
 					{
 						scorePlayer1++;
 						row = 1;
 						index = 0;
 					}
-				}
-			}
-			if(row == 1)
-			{
-				for(int a = index+1; a < pits.length; a++)
-				{
 					pits[row][a]++;
 					pile--;
 					if(pile == 0)
@@ -67,12 +53,28 @@ public class Board {
 						checkEnd(row, index);
 						break;
 					}	
+					
+				}
+			}
+			if(row == 1)
+			{
+				for(int a = index; a < pits.length; a++)
+				{
 					if(pile > 0 && a == 0)
 					{
 						scorePlayer2++;
 						row = 0;
 						index = 5;
 					}
+					pits[row][a]++;
+					pile--;
+					if(pile == 0)
+					{
+						turn++;
+						checkEnd(row, index);
+						break;
+					}	
+					
 				}
 			}
 		}
